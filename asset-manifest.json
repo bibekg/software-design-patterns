@@ -1,0 +1,20 @@
+{
+  "main.css": "static/css/main.65027555.css",
+  "main.css.map": "static/css/main.65027555.css.map",
+  "main.js": "static/js/main.d1204614.js",
+  "main.js.map": "static/js/main.d1204614.js.map",
+  "static/media/PatternComparisons.scss": "static/media/PatternComparisons.ee861454.scss",
+  "static/media/PatternOption.scss": "static/media/PatternOption.2ae041c3.scss",
+  "static/media/PatternSelector.scss": "static/media/PatternSelector.d91d721a.scss",
+  "static/media/abstract-factory-diagram.png": "static/media/abstract-factory-diagram.574216c9.png",
+  "static/media/adapter-diagram.png": "static/media/adapter-diagram.6574ca59.png",
+  "static/media/command-diagram.png": "static/media/command-diagram.0a8b2018.png",
+  "static/media/facade-diagram.png": "static/media/facade-diagram.f0ccc68c.png",
+  "static/media/factory-method-diagram.png": "static/media/factory-method-diagram.a5310c88.png",
+  "static/media/mediator-diagram.png": "static/media/mediator-diagram.b16474a8.png",
+  "static/media/observer-diagram.png": "static/media/observer-diagram.5db58d29.png",
+  "static/media/singleton-diagram.png": "static/media/singleton-diagram.71dfa049.png",
+  "static/media/state-diagram.png": "static/media/state-diagram.678f0e93.png",
+  "static/media/strategy-diagram.png": "static/media/strategy-diagram.d36a7b84.png",
+  "static/media/template-method-diagram.png": "static/media/template-method-diagram.4bb54a52.png"
+}
