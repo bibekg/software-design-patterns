@@ -1,0 +1,39 @@
+.pattern-selector {
+
+  .pattern-selector-for-type {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+  .pattern-selector-options {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    .pattern-option {
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      border-left: 1px solid black;
+      &:last-child { border-right: 1px solid black; }
+
+      &.deselected {
+        color: black;
+        background-color: white;
+      }
+
+      &.selected {
+        color: white;
+
+        &.creational-patterns { background-color: red; }
+        &.behavioral-patterns { background-color: green; }
+        &.structural-patterns { background-color: blue; }
+      }
+    }
+  }
+
+  .pattern-selector-caption {
+    text-align: center;
+  }
+}
