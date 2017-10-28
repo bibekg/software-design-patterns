@@ -9,10 +9,22 @@ export default class PatternComparisons extends React.Component {
     super(props);
 
     this.state = {
-      selectedPatterns: props.patterns
+      selectedPatterns: this.groupPatterns(props.patterns)
     };
 
     this.onSelectedPatternsChange = this.onSelectedPatternsChange.bind(this)
+  }
+
+  groupPatterns(patterns) {
+    const groupedPatterns = patterns.slice();
+
+    groupedPatterns.sort((patternA, patternB) => {
+      if (patternA.type < patternB.type) { return -1; }
+      if (patternA.type > patternB.type) { return 1; }
+      return 0;
+    });
+
+    return groupedPatterns;
   }
 
   onSelectedPatternsChange(newPatternNames) {
@@ -22,12 +34,11 @@ export default class PatternComparisons extends React.Component {
     ));
 
     this.setState({
-      selectedPatterns: newPatternsSelected
+      selectedPatterns: this.groupPatterns(newPatternsSelected)
     });
   }
 
   render() {
-    const { patterns } = this.props;
 
     return (
       <div className='pattern-comparisons'>
@@ -35,7 +46,7 @@ export default class PatternComparisons extends React.Component {
       <h1 className='main-title'>Software Design Patterns</h1>
 
       <PatternSelector
-        allPatterns={patterns}
+        allPatterns={this.groupPatterns(this.props.patterns)}
         onPatternChange={this.onSelectedPatternsChange}
       />
 

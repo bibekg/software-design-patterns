@@ -144,7 +144,7 @@ const patterns = [
   {
     name: 'Template Method',
     link: 'https://sourcemaking.com/design_patterns/template_method',
-    type: PATTERN_TYPES.STRUCTURAL,
+    type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Template Method Pattern defines the skeleton of an algorithm in a method, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm’s structure.',
     diagram: templateMethodDiagram,
     notes: [
@@ -160,14 +160,14 @@ const patterns = [
   {
     name: 'State',
     link: 'https://sourcemaking.com/design_patterns/state',
-    type: PATTERN_TYPES.STRUCTURAL,
+    type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The State Pattern allows an object to alter its behavior when its internal state changes. The object will appear to change its class.',
     diagram: stateDiagram,
     notes: [
       'Encapsulates state changes in classes',
-      'Delegate to state when action occurs', 
-      'Easy to add states, hard to add actions', 
-      'Each state handles all actions', 
+      'Delegate to state when action occurs',
+      'Easy to add states, hard to add actions',
+      'Each state handles all actions',
       'Favor composition over inheritance',
       'Either state classes or client can handle state transition'
     ]
