@@ -23,11 +23,15 @@ const patterns = [
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Strategy Pattern defines a family of algorithms, encapsulate each one, and make them interchangeale. Lets the algorithm vary indpendently from the clients that use it.',
     diagram: strategyDiagram,
-    pros: [],
-    cons: [
+    notes: [
+      'Comparable in Java',
+      'Add behavior dynamically',
+      'Uses subtyping',
+      'Encapsulate what varies',
+      'Program to interface, not implementation',
+      'Favor composition over inheritance',
       'Destroys code reuse -- by defining interfaces, every class that needs to support that interface needs to implement that functionality'
-    ],
-    notes: [],
+    ]
   },
   {
     name: 'Observer',
@@ -35,11 +39,16 @@ const patterns = [
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Observer Pattern defines a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and updated automatically.',
     diagram: observerDiagram,
-    pros: [
-      'Loose coupling between data source and data dependencies'
-    ],
-    cons: [],
-    notes: []
+    notes: [
+      'Most GUI Object Event Handling implements this',
+      'Loose coupling between data source and data dependencies',
+      'Subject knows about observer through an interface',
+      'Observers can be added whenever',
+      'Subjects and observers can be reused and modified',
+      'Publish Subscribe Model',
+      'Hard to implement notifying single Observer',
+      'Hard to add new type of subject'
+    ]
   },
   {
     name: 'Mediator',
@@ -47,39 +56,14 @@ const patterns = [
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Mediator Pattern centralizes complex communications and control between related objects',
     diagram: mediatorDiagram,
-    pros: [],
-    cons: [],
-    notes: []
-  },
-  {
-    name: 'Factory Method',
-    link: 'https://sourcemaking.com/design_patterns/factory_method',
-    type: PATTERN_TYPES.CREATIONAL,
-    definition: 'The Factory Method Pattern defines an interface for creating an object but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.',
-    diagram: factoryMethodDiagram,
-    pros: [],
-    cons: [],
-    notes: []
-  },
-  {
-    name: 'Abstract Factory',
-    link: 'https://sourcemaking.com/design_patterns/abstract_factory',
-    type: PATTERN_TYPES.CREATIONAL,
-    definition: 'The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.',
-    diagram: abstractFactoryDiagram,
-    pros: [],
-    cons: [],
-    notes: []
-  },
-  {
-    name: 'Singleton',
-    link: 'https://sourcemaking.com/design_patterns/singleton',
-    type: PATTERN_TYPES.CREATIONAL,
-    definition: 'The Singleton Pattern ensures a class has only one instance and provides a global point of access to it.',
-    diagram: singletonDiagram,
-    pros: [],
-    cons: [],
-    notes: [],
+    notes: [
+      'Lots of networking protocols implement this',
+      'Change in communication only mediator has to handle it',
+      'Centralizes complexity',
+      'Mediators can be complex',
+      'Single point of failure',
+      'Every subject treated differently, unlike Observer, where all treated the same'
+    ]
   },
   {
     name: 'Command',
@@ -87,9 +71,51 @@ const patterns = [
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Command Pattern encapsulates a request as an object, thereby letting you parameterize other objects with different requests, que or log requests, and support undoable operations.',
     diagram: commandDiagram,
-    pros: [],
-    cons: [],
-    notes: []
+    notes: [
+      'Transanctional Database with undo & failure recovery mode implement this',
+      'Decouples requester of action from object that does action',
+      'Each command a class',
+      'Invoker makes request of command by calling execute()'
+    ]
+  },
+  {
+    name: 'Factory Method',
+    link: 'https://sourcemaking.com/design_patterns/factory_method',
+    type: PATTERN_TYPES.CREATIONAL,
+    definition: 'The Factory Method Pattern defines an interface for creating an object but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.',
+    diagram: factoryMethodDiagram,
+    notes: [
+      'Decouples via inheritance',
+      'Think types of products factories make',
+      'Open for extension closed for modification',
+      'Encapsulates how objects created',
+      'Client code decoupled from object creation code',
+      '(Dependency Inversion Principle) Depend upon abstractions, not concrete classes'
+    ]
+  },
+  {
+    name: 'Abstract Factory',
+    link: 'https://sourcemaking.com/design_patterns/abstract_factory',
+    type: PATTERN_TYPES.CREATIONAL,
+    definition: 'The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.',
+    diagram: abstractFactoryDiagram,
+    notes: [
+      'Decouples via composition',
+      'Think ingredients of a factory',
+      'Use when products that belong together'
+    ]
+  },
+  {
+    name: 'Singleton',
+    link: 'https://sourcemaking.com/design_patterns/singleton',
+    type: PATTERN_TYPES.CREATIONAL,
+    definition: 'The Singleton Pattern ensures a class has only one instance and provides a global point of access to it.',
+    diagram: singletonDiagram,
+    notes: [
+      'Thread, resource pools and logger objects implement this',
+      'Multi-Threading needs to be taken into account (Solution:Synchronized or Eager Instantiation)',
+      'Private constructor and static object'
+    ],
   },
   {
     name: 'Adapter',
@@ -97,9 +123,11 @@ const patterns = [
     type: PATTERN_TYPES.STRUCTURAL,
     definition: 'The Adapter Pattern converts the interface of a class into another interface the clients expect. Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces.',
     diagram: adapterDiagram,
-    pros: [],
-    cons: [],
-    notes: []
+    notes: [
+      'Any sort of Wrapper implements this',
+      'Enumeration and Iterators used in this pattern',
+      'Converts interface into something adaptee can work with without actually modifying the interface'
+    ]
   },
   {
     name: 'Facade',
@@ -107,9 +135,11 @@ const patterns = [
     type: PATTERN_TYPES.STRUCTURAL,
     definition: 'The Facade Pattern provides a uniﬁed interface to a set of interfaces in a subsytem. Facade deﬁnes a higher-level interface that makes the subsystem easier to use.',
     diagram: facadeDiagram,
-    pros: [],
-    cons: [],
-    notes: []
+    notes: [
+      'Actually alters interface to simply',
+      'Decouples client implementation from any 1 subsystem',
+      'Favor composition over inheritance', 'Principle of Least Knowledge'
+    ]
   },
   {
     name: 'Template Method',
@@ -117,9 +147,15 @@ const patterns = [
     type: PATTERN_TYPES.STRUCTURAL,
     definition: 'The Template Method Pattern defines the skeleton of an algorithm in a method, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm’s structure.',
     diagram: templateMethodDiagram,
-    pros: [],
-    cons: [],
-    notes: []
+    notes: [
+      'Algorithm lives in 1 place so only changes there', 'Framework for future extension',
+      'Maximizes code reuse',
+      'Concentrates knowledge and relies on subclasses for complete implementations',
+      'Hooks are optional part of the algorithm',
+      'Hollywood Principle: High-level components will call low level components',
+      'Does not necessarily mean superclass: i.e. compareTo() Java',
+      'Provides outline', 'Uses inheritance'
+    ]
   },
   {
     name: 'State',
@@ -127,9 +163,14 @@ const patterns = [
     type: PATTERN_TYPES.STRUCTURAL,
     definition: 'The State Pattern allows an object to alter its behavior when its internal state changes. The object will appear to change its class.',
     diagram: stateDiagram,
-    pros: [],
-    cons: [],
-    notes: []
+    notes: [
+      'Encapsulates state changes in classes',
+      'Delegate to state when action occurs', 
+      'Easy to add states, hard to add actions', 
+      'Each state handles all actions', 
+      'Favor composition over inheritance',
+      'Either state classes or client can handle state transition'
+    ]
   },
 ]
 
