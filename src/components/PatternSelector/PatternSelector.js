@@ -9,13 +9,29 @@ export default class PatternSelector extends React.Component {
     super(props);
 
     const selectedPatterns = {};
+    const oneOfTypeSelected = {};
+    const types = new Set();
+    props.allPatterns.forEach(pattern => types.add(pattern.type));
+    Array.from(types).forEach(type => oneOfTypeSelected[type] = false);
+
     props.allPatterns.forEach(pattern => {
-      selectedPatterns[pattern.name] = true
+      if (oneOfTypeSelected[pattern.type] === false) {
+        selectedPatterns[pattern.name] = true;
+        oneOfTypeSelected[pattern.type] = true;
+      } else {
+        selectedPatterns[pattern.name] = false;
+      }
     });
 
     this.state = selectedPatterns;
+    console.log(selectedPatterns);
+    props.onPatternChange(this.getSelectedPatternsFromObject(selectedPatterns));
 
     this.togglePatternSelection = this.togglePatternSelection.bind(this);
+  }
+
+  getSelectedPatternsFromObject(obj) {
+    return Object.keys(obj).filter(pattern => obj[pattern]);
   }
 
   togglePatternSelection(patternName) {
@@ -23,9 +39,7 @@ export default class PatternSelector extends React.Component {
     update[patternName] = !this.state[patternName];
     const nextState = Object.assign({}, this.state, update);
     this.setState(nextState);
-    const newSelectedPatterns = Object.keys(nextState)
-      .filter(pattern => nextState[pattern]);
-    this.props.onPatternChange(newSelectedPatterns);
+    this.props.onPatternChange(this.getSelectedPatternsFromObject(nextState));
   }
 
   render() {
@@ -57,7 +71,7 @@ export default class PatternSelector extends React.Component {
               );
             })
           }
-          
+
         </div>
 
       </div>
