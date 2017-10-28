@@ -42,31 +42,22 @@ export default class PatternSelector extends React.Component {
     return (
       <div className='pattern-selector'>
         <p className='pattern-selector-caption'>Select the patterns you want to compare.</p>
-        <div className='pattern-selector-for-type'>
+        <div className='pattern-selector-options'>
+
           {
-            Object.keys(patternsByType).map(patternType => {
-
-              const patternTypeClass = `${patternType.toLowerCase().split(' ').join('-')}-patterns`;
-
+            allPatterns.map(pattern => {
+              const patternTypeClass = `${pattern.type.toLowerCase().split(' ').join('-')}-patterns`;
               return (
-                <div className={`
-                  pattern-selector-options
-                  ${patternTypeClass}
-                `}>
-                  {
-                    patternsByType[patternType].map(pattern => (
-                      <PatternOption
-                        key={pattern.name}
-                        className={`${this.state[pattern.name] ? 'selected' : 'deselected'} ${patternTypeClass}`}
-                        pattern={pattern}
-                        onClick={this.togglePatternSelection}
-                      />
-                    ))
-                  }
-                </div>
+                <PatternOption
+                  key={pattern.name}
+                  className={`${this.state[pattern.name] ? 'selected' : 'deselected'} ${patternTypeClass}`}
+                  pattern={pattern}
+                  onClick={this.togglePatternSelection}
+                />
               );
             })
           }
+          
         </div>
 
       </div>

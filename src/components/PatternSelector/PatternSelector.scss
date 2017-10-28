@@ -1,35 +1,29 @@
+@import '../../scss/Variables';
+
 .pattern-selector {
 
-  .pattern-selector-for-type {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-  }
   .pattern-selector-options {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     align-items: center;
+    justify-content: center;
+
+    .pattern-selector-for-type {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+
+      &:not(:last-child) { margin-right: 2px; }
+      &:not(:first-child) { margin-left: 2px; }
+    }
 
     .pattern-option {
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
-      border-left: 1px solid black;
-      &:last-child { border-right: 1px solid black; }
+      &:not(:last-child) { margin-right: 2px; }
+      &:not(:first-child) { margin-left: 2px; }
 
-      &.deselected {
-        color: black;
-        background-color: white;
-      }
-
-      &.selected {
-        color: white;
-
-        &.creational-patterns { background-color: red; }
-        &.behavioral-patterns { background-color: green; }
-        &.structural-patterns { background-color: blue; }
-      }
+      
     }
   }
 

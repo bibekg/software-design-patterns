@@ -1,8 +1,45 @@
+@import '../../scss/Variables';
+
 .pattern-option {
     padding: 15px;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.deselected {
+      background-color: white;
+
+      &.creational-patterns {
+        border: 2px solid $color-creational;
+        color: $color-creational;
+      }
+      &.behavioral-patterns {
+        border: 2px solid $color-behavioral;
+        color: $color-behavioral;
+      }
+      &.structural-patterns {
+        border: 2px solid $color-structural;
+        color: $color-structural;
+      }
+    }
 
     &.selected {
       color: white;
+
+      &.creational-patterns {
+        border: 2px solid transparent;
+        background-color: $color-creational;
+      }
+
+      &.behavioral-patterns {
+        border: 2px solid transparent;
+        background-color: $color-behavioral;
+      }
+
+      &.structural-patterns {
+        border: 2px solid transparent;
+        background-color: $color-structural;
+      }
     }
 }

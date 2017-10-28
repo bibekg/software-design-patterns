@@ -32,6 +32,8 @@ export default class PatternComparisons extends React.Component {
     return (
       <div className='pattern-comparisons'>
 
+      <h1 className='main-title'>Software Design Patterns</h1>
+
       <PatternSelector
         allPatterns={patterns}
         onPatternChange={this.onSelectedPatternsChange}
