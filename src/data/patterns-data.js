@@ -1,15 +1,3 @@
-import strategyDiagram from '../diagrams/strategy-diagram.png';
-import observerDiagram from '../diagrams/observer-diagram.png';
-import mediatorDiagram from '../diagrams/mediator-diagram.png';
-import factoryMethodDiagram from '../diagrams/factory-method-diagram.png';
-import abstractFactoryDiagram from '../diagrams/abstract-factory-diagram.png';
-import singletonDiagram from '../diagrams/singleton-diagram.png';
-import commandDiagram from '../diagrams/command-diagram.png';
-import adapterDiagram from '../diagrams/adapter-diagram.png';
-import facadeDiagram from '../diagrams/facade-diagram.png';
-import templateMethodDiagram from '../diagrams/template-method-diagram.png';
-import stateDiagram from '../diagrams/state-diagram.png';
-
 export const PATTERN_TYPES = {
   BEHAVIORAL: 'BEHAVIORAL',
   STRUCTURAL: 'STRUCTURAL',
@@ -22,7 +10,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/strategy',
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Strategy Pattern defines a family of algorithms, encapsulate each one, and make them interchangeale. Lets the algorithm vary indpendently from the clients that use it.',
-    diagram: strategyDiagram,
     notes: [
       'Comparable in Java',
       'Add behavior dynamically',
@@ -38,7 +25,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/observer',
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Observer Pattern defines a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and updated automatically.',
-    diagram: observerDiagram,
     notes: [
       'Most GUI Object Event Handling implements this',
       'Loose coupling between data source and data dependencies',
@@ -55,7 +41,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/mediator',
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Mediator Pattern centralizes complex communications and control between related objects',
-    diagram: mediatorDiagram,
     notes: [
       'Lots of networking protocols implement this',
       'Change in communication only mediator has to handle it',
@@ -70,7 +55,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/command',
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Command Pattern encapsulates a request as an object, thereby letting you parameterize other objects with different requests, que or log requests, and support undoable operations.',
-    diagram: commandDiagram,
     notes: [
       'Transanctional Database with undo & failure recovery mode implement this',
       'Decouples requester of action from object that does action',
@@ -83,7 +67,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/factory_method',
     type: PATTERN_TYPES.CREATIONAL,
     definition: 'The Factory Method Pattern defines an interface for creating an object but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.',
-    diagram: factoryMethodDiagram,
     notes: [
       'Decouples via inheritance',
       'Think types of products factories make',
@@ -98,7 +81,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/abstract_factory',
     type: PATTERN_TYPES.CREATIONAL,
     definition: 'The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.',
-    diagram: abstractFactoryDiagram,
     notes: [
       'Decouples via composition',
       'Think ingredients of a factory',
@@ -110,7 +92,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/singleton',
     type: PATTERN_TYPES.CREATIONAL,
     definition: 'The Singleton Pattern ensures a class has only one instance and provides a global point of access to it.',
-    diagram: singletonDiagram,
     notes: [
       'Thread, resource pools and logger objects implement this',
       'Multi-Threading needs to be taken into account (Solution:Synchronized or Eager Instantiation)',
@@ -122,7 +103,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/adapter',
     type: PATTERN_TYPES.STRUCTURAL,
     definition: 'The Adapter Pattern converts the interface of a class into another interface the clients expect. Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces.',
-    diagram: adapterDiagram,
     notes: [
       'Any sort of Wrapper implements this',
       'Enumeration and Iterators used in this pattern',
@@ -134,7 +114,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/facade',
     type: PATTERN_TYPES.STRUCTURAL,
     definition: 'The Facade Pattern provides a uniﬁed interface to a set of interfaces in a subsytem. Facade deﬁnes a higher-level interface that makes the subsystem easier to use.',
-    diagram: facadeDiagram,
     notes: [
       'Actually alters interface to simply',
       'Decouples client implementation from any 1 subsystem',
@@ -146,7 +125,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/template_method',
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The Template Method Pattern defines the skeleton of an algorithm in a method, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm’s structure.',
-    diagram: templateMethodDiagram,
     notes: [
       'Algorithm lives in 1 place so only changes there', 'Framework for future extension',
       'Maximizes code reuse',
@@ -162,7 +140,6 @@ const patterns = [
     link: 'https://sourcemaking.com/design_patterns/state',
     type: PATTERN_TYPES.BEHAVIORAL,
     definition: 'The State Pattern allows an object to alter its behavior when its internal state changes. The object will appear to change its class.',
-    diagram: stateDiagram,
     notes: [
       'Encapsulates state changes in classes',
       'Delegate to state when action occurs',
@@ -173,5 +150,24 @@ const patterns = [
     ]
   },
 ]
+
+// Add diagrams and code sample images to each pattern object
+patterns.forEach(pattern => {
+  const patternName = pattern.name.toLowerCase().split(' ').join('-');
+
+  try {
+    const diagram = require(`../diagrams/${patternName}-diagram.png`);
+    pattern.diagram = diagram;
+  } catch(e) {
+    console.log(`Failed to require ../diagrams/${patternName}-diagram.png`);
+  }
+
+  try {
+    const codeSample = require(`../code-samples/${patternName}-code-sample.png`);
+    pattern.codeSample = codeSample;
+  } catch(e) {
+    console.log(`Failed to require ../code-samples/${patternName}-code-sample.png`);
+  }
+})
 
 export default patterns;

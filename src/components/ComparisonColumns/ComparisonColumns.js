@@ -62,6 +62,16 @@ export default function ComparisonColumns(props) {
           ))
         }
       </div>
+
+      <div className='patterns-row patterns-code-sample'>
+        {
+          patterns.map(pattern => (
+            <div className='pattern-column' key={pattern.name}>
+              <img src={pattern.codeSample} alt={`No code sample for ${pattern.name} yet. Coming soon!`}/>
+            </div>
+          ))
+        }
+      </div>
     </div>
   )
 }
