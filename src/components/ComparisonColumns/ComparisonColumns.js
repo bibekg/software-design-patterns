@@ -15,7 +15,7 @@ export default function ComparisonColumns(props) {
               className={`pattern-column pattern-name ${pattern.type.toLowerCase()}`}
               key={pattern.name}
             >
-              <a href={pattern.link}>
+              <a href={pattern.link} target='_blank'>
                 {pattern.name}
               </a>
             </div>
