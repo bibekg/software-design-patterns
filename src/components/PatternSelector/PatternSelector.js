@@ -28,6 +28,7 @@ export default class PatternSelector extends React.Component {
     props.onPatternChange(this.getSelectedPatternsFromObject(selectedPatterns));
 
     this.togglePatternSelection = this.togglePatternSelection.bind(this);
+    this.toggleAllSelection = this.toggleAllSelection.bind(this);
   }
 
   getSelectedPatternsFromObject(obj) {
@@ -38,6 +39,17 @@ export default class PatternSelector extends React.Component {
     const update = {};
     update[patternName] = !this.state[patternName];
     const nextState = Object.assign({}, this.state, update);
+    this.setState(nextState);
+    this.props.onPatternChange(this.getSelectedPatternsFromObject(nextState));
+  }
+
+  toggleAllSelection() {
+    const nextState = Object.assign({}, this.state);
+    const areAnySelected = this.getSelectedPatternsFromObject(nextState).length === 0;
+    // If any are selected, deselect all, otherwise, select all
+    Object.keys(nextState).forEach(pattern => {
+      nextState[pattern] = areAnySelected;
+    });
     this.setState(nextState);
     this.props.onPatternChange(this.getSelectedPatternsFromObject(nextState));
   }
@@ -53,9 +65,19 @@ export default class PatternSelector extends React.Component {
     patternsByType[PATTERN_TYPES.BEHAVIORAL] = allPatterns
       .filter(pattern => pattern.type === PATTERN_TYPES.BEHAVIORAL);
 
+    const selectedPatterns = this.getSelectedPatternsFromObject(this.state);
+
     return (
       <div className='pattern-selector'>
         <p className='pattern-selector-caption'>Select the patterns you want to compare.</p>
+
+        <a
+          className='pattern-selector-toggler'
+          onClick={this.toggleAllSelection}
+        >
+          { selectedPatterns.length === 0 ? 'Select all' : 'Deselect all'}
+        </a>
+
         <div className='pattern-selector-options'>
 
           {

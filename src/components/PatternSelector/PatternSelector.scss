@@ -2,6 +2,10 @@
 
 .pattern-selector {
 
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
   .pattern-selector-options {
     display: flex;
     flex-flow: row wrap;
@@ -27,7 +31,10 @@
     }
   }
 
-  .pattern-selector-caption {
-    text-align: center;
+  .pattern-selector-toggler {
+    color: blue;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    cursor: pointer;
   }
 }
