@@ -47,7 +47,12 @@ export default function ComparisonColumns(props) {
         {
           patterns.map(pattern => (
             <div className='pattern-column' key={pattern.name}>
-              <img src={pattern.diagram} alt={`${pattern.name} diagram`}/>
+              {
+                pattern.diagram ?
+                  <img src={pattern.diagram} alt={`${pattern.name} diagram`}/> :
+                  <p>{`No diagram available for ${pattern.name}`}</p>
+              }
+
             </div>
           ))
         }
@@ -67,7 +72,12 @@ export default function ComparisonColumns(props) {
         {
           patterns.map(pattern => (
             <div className='pattern-column' key={pattern.name}>
-              <img src={pattern.codeSample} alt={`No code sample for ${pattern.name} yet. Coming soon!`}/>
+              {
+                pattern.codeSample ?
+                  <img src={pattern.codeSample} alt={`${pattern.name} code sample`}/> :
+                  <p>{`No code sample available for ${pattern.name}`}</p>
+              }
+
             </div>
           ))
         }

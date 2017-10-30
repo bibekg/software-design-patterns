@@ -149,6 +149,19 @@ const patterns = [
       'Either state classes or client can handle state transition'
     ]
   },
+  {
+    name: 'Flyweight',
+    link: 'https://sourcemaking.com/design_patterns/flyweight',
+    type: PATTERN_TYPES.STRUCTURAL,
+    definition: 'The Flyweight Pattern is used to allow one instance of a class to be reused in order to provide many "virtual instances."',
+    notes: [
+      'The idea is to create a single object that virtually manages the state of all other objects',
+      'PRO: Decreased number of object instances at runtime',
+      'PRO: Centralizes state of many virtual objects into a single location',
+      'CON: Many instances must be controlled similarly',
+      'CON: A single logical instance won\'t be able to behave independently of other instances'
+    ]
+  },
 ]
 
 // Add diagrams and code sample images to each pattern object
