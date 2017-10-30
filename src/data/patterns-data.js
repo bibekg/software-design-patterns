@@ -172,14 +172,14 @@ patterns.forEach(pattern => {
     const diagram = require(`../diagrams/${patternName}-diagram.png`);
     pattern.diagram = diagram;
   } catch(e) {
-    console.log(`Failed to require ../diagrams/${patternName}-diagram.png`);
+    // console.log(`Failed to require ../diagrams/${patternName}-diagram.png`);
   }
 
   try {
     const codeSample = require(`../code-samples/${patternName}-code-sample.png`);
     pattern.codeSample = codeSample;
   } catch(e) {
-    console.log(`Failed to require ../code-samples/${patternName}-code-sample.png`);
+    // console.log(`Failed to require ../code-samples/${patternName}-code-sample.png`);
   }
 })
 

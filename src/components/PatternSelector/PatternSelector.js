@@ -24,7 +24,6 @@ export default class PatternSelector extends React.Component {
     });
 
     this.state = selectedPatterns;
-    console.log(selectedPatterns);
     props.onPatternChange(this.getSelectedPatternsFromObject(selectedPatterns));
 
     this.togglePatternSelection = this.togglePatternSelection.bind(this);
