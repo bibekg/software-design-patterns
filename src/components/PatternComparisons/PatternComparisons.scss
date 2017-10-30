@@ -8,6 +8,7 @@
     display: flex;
     flex-flow: column nowrap;
     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
     border-top: 1px solid gray;
   }
 
