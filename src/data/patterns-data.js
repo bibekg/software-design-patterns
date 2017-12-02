@@ -162,6 +162,23 @@ const patterns = [
       'CON: A single logical instance won\'t be able to behave independently of other instances'
     ]
   },
+  {
+    name: 'Builder',
+    link: 'https://sourcemaking.com/design_patterns/builder',
+    type: PATTERN_TYPES.CREATIONAL,
+    definition: 'The Builder Pattern separates the construction of a complex object from its representation so that the same construction process can create different representations.',
+    notes: [
+      'Allows you to make fields immutable',
+      'Reduces mistakes of having long list of similar API descriptions for object construction',
+      'Usage process is as follows',
+      [
+        'Programmer calls constructor/static factory with required parameters',
+        'Programmer receives BUILDER object (static member class of the class that it builds)',
+        'Programmer calls setter-like methods on builder object to set optional parameters of interest',
+        'Programmer calls parameterless build method to generate the object, which itself could be immutable'
+      ]
+    ]
+  },
 ]
 
 // Add diagrams and code sample images to each pattern object

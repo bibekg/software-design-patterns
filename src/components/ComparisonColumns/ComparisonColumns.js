@@ -3,9 +3,27 @@ import './ComparisonColumns.scss';
 
 export default function ComparisonColumns(props) {
   const { patterns } = props;
-  const generateListForArray = (arr) => (
-    arr.length === 0 ? null : <ul>{arr.map(i => <li key={i}>{i}</li>)}</ul>
-  );
+  const generateListForArray = (arr) => {
+
+    const helper = (arr, depth) => {
+      if (arr.length === 0) { return null; }
+
+      return (
+        <ul key={depth}>
+          {
+            arr.map(arrItem => (
+              Array.isArray(arrItem) ?
+                helper(arrItem, depth + 1) :
+                <li key={arrItem}>{arrItem}</li>
+            ))
+          }
+        </ul>
+      )
+    }
+
+    return helper(arr, 0)
+
+  };
   return (
     <div className='comparison-columns'>
       <div className='patterns-row patterns-names'>
