@@ -1,5 +1,6 @@
 import React from 'react';
 import './ComparisonColumns.scss';
+import CodeDisplay from '../CodeDisplay';
 
 export default function ComparisonColumns(props) {
   const { patterns } = props;
@@ -24,6 +25,7 @@ export default function ComparisonColumns(props) {
     return helper(arr, 0)
 
   };
+
   return (
     <div className='comparison-columns'>
       <div className='patterns-row patterns-names'>
@@ -91,9 +93,8 @@ export default function ComparisonColumns(props) {
           patterns.map(pattern => (
             <div className='pattern-column' key={pattern.name}>
               {
-                pattern.codeSample ?
-                  <img src={pattern.codeSample} alt={`${pattern.name} code sample`}/> :
-                  <p>{`No code sample available for ${pattern.name}`}</p>
+                pattern.codeSample &&
+                  <CodeDisplay fileUrl={pattern.codeSample} language='java' />
               }
 
             </div>

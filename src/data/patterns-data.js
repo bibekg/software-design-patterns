@@ -186,15 +186,13 @@ patterns.forEach(pattern => {
   const patternName = pattern.name.toLowerCase().split(' ').join('-');
 
   try {
-    const diagram = require(`../diagrams/${patternName}-diagram.png`);
-    pattern.diagram = diagram;
+    pattern.diagram = require(`../diagrams/${patternName}-diagram.png`);
   } catch(e) {
     // console.log(`Failed to require ../diagrams/${patternName}-diagram.png`);
   }
 
   try {
-    const codeSample = require(`../code-samples/${patternName}-code-sample.png`);
-    pattern.codeSample = codeSample;
+    pattern.codeSample = require(`../code-samples/${patternName}-code-sample.java`);
   } catch(e) {
     // console.log(`Failed to require ../code-samples/${patternName}-code-sample.png`);
   }
